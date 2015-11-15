@@ -34,12 +34,13 @@
         {
             "question": "The TEMPLATE variable in .pro file can have following values:",
              "answers": [
-                 {"key":"A", "txt": "app, desktop, mobile,"},
+                 {"key":"A", "txt":"app, desktop, mobile,"},
                  {"key":"B", "txt":"app, lib, subdirs,"},
-                 {"key":"C", "txt":"app, qt4, qt5."}      
+                 {"key":"C", "txt":"app, qt4, qt5,"},
+                 {"key":"D", "txt":"app, debug, release."}      
              ],
             "correct": "B",
-            "hint": "Source: <a href='http://doc.qt.io/qt-4.8/qmake-project-files.html#project-templates' target='_blank'>http://doc.qt.io/qt-4.8/qmake-project-files.html</a>"
+            "hint": "TEMPLATE can have values: app, lib, subdirs, vcapp, vclib, vcsubdirs. Source: <a href='http://doc.qt.io/qt-4.8/qmake-project-files.html#project-templates' target='_blank'>http://doc.qt.io/qt-4.8/qmake-project-files.html</a>"
         },
         {
             "question": "What happens when the object of class QObject is copied?",
@@ -134,12 +135,12 @@
         {
             "question": "What happens, when you try connect signal and slot, which are already connected (the same sender and receiver)?",
              "answers": [
-                 {"key":"A", "txt": "Duplicate connection will be created, and for every signal emit() the corresponding slot will be called two times,"},
-                 {"key":"B", "txt":"Connect() will fail and return false; the connection will remain single,"},
-                 {"key":"C", "txt":"If the connection type was Qt::UniqueConnection, the code will not compile."}      
+                 {"key":"A", "txt": "Duplicate connection will be created, and for every signal <code>emit()</code> the corresponding slot will be called two times,"},
+                 {"key":"B", "txt":"<code>connect()</code> will fail and return false; the connection will remain single,"},
+                 {"key":"C", "txt":"If the connection type was <code>Qt::UniqueConnection</code>, the code will not compile."}      
              ],
             "correct": "A",
-            "hint": "By default, for every connection you make, a signal is emitted; two signals are emitted for duplicate connections. You can break all of these connections with a single disconnect() call. If you pass the Qt::UniqueConnection type, the connection will only be made if it is not a duplicate. If there is already a duplicate (exact same signal to the exact same slot on the same objects), the connection will fail and connect will return false. Source: <a href='http://doc.qt.io/qt-4.8/signalsandslots.html' target='_blank'>http://doc.qt.io/qt-4.8/signalsandslots.html</a>"
+            "hint": "By default, for every connection you make, a signal is emitted; two signals are emitted for duplicate connections. You can break all of these connections with a single <code>disconnect()</code> call. If you pass the <code>Qt::UniqueConnection</code> type, the connection will only be made if it is not a duplicate. If there is already a duplicate (exact same signal to the exact same slot on the same objects), the connection will fail and connect will return false. Source: <a href='http://doc.qt.io/qt-4.8/signalsandslots.html' target='_blank'>http://doc.qt.io/qt-4.8/signalsandslots.html</a>"
         },
         {
             "question": "What will happen if you instantiate <code>QVector &lt;QWidget&gt;</code>?",
@@ -198,8 +199,40 @@
                  {"key":"B", "txt":"The code may don't compile or don't link, depending on where the implementation was done in source code,"},
                  {"key":"C", "txt":"The implementation will overwrite usual implementation done by moc and the code will not work as intended."}      
              ],
+            "correct": "B",
+            "hint": "Code won't compile if the redundant definition (signal body) is in header. Code won't link if the redundant definition is in .cpp file. Source: tested with code."
+        },
+        {
+            "question": "Qt::ConnectionType::AutoConnection means, that",
+             "answers": [
+                 {"key":"A", "txt":"the slot is invoked immediately, when the signal is emitted,"},
+                 {"key":"B", "txt":"the slot is invoked when control returns to the event loop of the receiver's thread,"},
+                 {"key":"C", "txt":"when the sender and receiver are living in the same thread, then A, otherwise B."}      
+             ],
+            "correct": "C",
+            "hint": "Auto Connection (default) - If the signal is emitted in the thread which the receiving object has affinity then the behavior is the same as the Direct Connection. Otherwise, the behavior is the same as the Queued Connection. Source: <a href='http://doc.qt.io/qt-5/threads-qobject.html#signals-and-slots-across-threads' target='_blank'>http://doc.qt.io/qt-5/threads-qobject.html#signals-and-slots-across-threads</a>"
+        },
+        {
+            "question": "Which of the following is not a Qt container?",
+             "answers": [
+                 {"key":"A", "txt":"QCache&lt;Key,T&gt;,"},
+                 {"key":"B", "txt":"QSet&lt;T&gt;,"},
+                 {"key":"C", "txt":"QMultiMap&lt;Key,T&gt;,"},
+                 {"key":"D", "txt":"QForwardList&lt;T&gt;,"},
+                 {"key":"E", "txt":"all of above are valid Qt containers."}
+             ],
+            "correct": "D",
+            "hint": "In the time of creating this quiz (11.2015) the QForwardList does not exist."
+        },
+        {
+            "question": "Which Qt class allows to start external program from Qt application?",
+             "answers": [
+                 {"key":"A", "txt":"QProcess,"},
+                 {"key":"B", "txt":"QPluginLoader,"},
+                 {"key":"C", "txt":"QRunnable."}
+             ],
             "correct": "A",
-            "hint": "Source: tested with code."
+            "hint": "The QProcess class is used to start external programs and to communicate with them. Source: <a href='http://doc.qt.io/qt-5/qprocess.html' target='_blank'>http://doc.qt.io/qt-5/qprocess.html</a>"
         }
     ]
 }
