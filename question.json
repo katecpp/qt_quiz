@@ -1,0 +1,165 @@
+ {
+     "quiz": 
+     [
+         {
+             "question": "Choose  <font color='green'>true</font> sentence about qmake:",
+             "a": "It is possible to generate both - Makefile and .pro file - with the use of qmake.",
+             "b": "Qmake can generate Makefile, but it is not possible to generate .pro file with qmake,",
+             "c": "Qmake compiles the project.",
+             "correct": "A",
+             "hint": "In the default mode, qmake will use the description in a project file to generate a Makefile, but it is also possible to use qmake to generate project files. Source: <a href='http://doc.qt.io/qt-4.8/qmake-running.html' target='_blank'>http://doc.qt.io/qt-4.8/qmake-running.html</a>"
+         },
+         {
+             "question": "Choose <font color='red'>false</font> sentence about QString.",
+             "a": "QString stores the string with the use of 8-bits characters,",
+             "b": "QString is implemented with the use of implicit sharing for the best memory usage and performance,",
+             "c": "QString is the part of the QtCore module.",
+             "correct": "A",
+             "hint": "QString stores a string of 16-bit QChars, where each QChar corresponds one Unicode 4.0 character. Source: <a href='http://doc.qt.io/qt-5/qstring.html' target='_blank'>http://doc.qt.io/qt-5/qstring.html</a>"
+         },
+         {
+             "question": "Choose  <font color='red'>false</font> sentence about Q_OBJECT macro.",
+             "a": "It must appear in the public section of the class,",
+             "b": "It requires that the class in which it appears derive from QObject,",
+             "c": "is needed by classes that define signals and slots.",
+             "correct": "A",
+             "hint": "The Q_OBJECT macro must appear in the private section of a class definition that declares its own signals and slots or that uses other services provided by Qt's meta-object system. Source: <a href='http://doc.qt.io/qt-5/qobject.html#Q_OBJECT' target='_blank'>http://doc.qt.io/qt-5/qobject.html</a>"
+         },
+         {
+             "question": "The TEMPLATE variable in .pro file can have following values:",
+             "a": "app, desktop, mobile,",
+             "b": "app, lib, subdirs,",
+             "c": "app, qt4, qt5.",
+             "correct": "B",
+             "hint": "Source: <a href='http://doc.qt.io/qt-4.8/qmake-project-files.html#project-templates' target='_blank'>http://doc.qt.io/qt-4.8/qmake-project-files.html</a>"
+         },
+         {
+             "question": "What happens when the object of class QObject is copied?",
+             "a": "The <code>QObject::objectName()</code> is also copied and is identical for both objects,",
+             "b": "All the signals/slot connections are transferred to the copy,",
+             "c": "It’s impossible to copy the QObject and all its subclasses.",
+             "correct": "C",
+             "hint": "QObject and all subclasses of QObject (direct or indirect) have their copy constructor and assignment operator disabled. Source: <a href='http://doc.qt.io/qt-5/object.html#identity-vs-value' target='_blank'>http://doc.qt.io/qt-5/object.html#identity-vs-value</a>"
+         },
+         {
+             "question": "Qt5 introduces new style of connect with the use of function pointers, like presented below:<pre class='prettyprint'>connect( slider, &QSlider::valueChanged, spinbox, &QSpinBox::setValue );</pre>The old Qt4 style was using SIGNAL() and SLOT() macros:<pre class='prettyprint'>connect(slider, SIGNAL(valueChanged(int)), spinbox, SLOT(setValue(int)));</pre> One of the advantages of Qt5 style is that:",
+             "a": "it allows to connect overloaded slots easier,",
+             "b": "errors can be detected earlier, at compilation stage,",
+             "c": "Q_OBJECT macro is not needed for signals.",
+             "correct": "B",
+             "hint": "Pros of new syntax:<br>- Compile time check of the existence of the signals and slot, of the types, or if the Q_OBJECT is missing.<br>- Argument can be by typedefs or with different namespace specifier, and it works.<br>- Possibility to automatically cast the types if there is implicit conversion (e.g. from QString to QVariant)<br>- It is possible to connect to any member function of QObject, not only slots.<br>Source: <a href='https://wiki.qt.io/New_Signal_Slot_Syntax' target='_blank'>https://wiki.qt.io/New_Signal_Slot_Syntax</a>"
+         },
+        {
+             "question": "What is <font color='red'>impossible</font> regarding signals and slots?",
+             "a": "Signal to signal connection,",
+             "b": "Connecting signal with no parameter to the slot with parameter, like <pre class='prettyprint'>connect(slider, SIGNAL(updated()), spinbox, SLOT(valueChanged(int)));</pre>",
+             "c": "Connecting signal with a parameter to the slot with no parameters, like <pre class='prettyprint'>connect(slider, SIGNAL(valueChanged(int)), spinbox, SLOT(update()));</pre>",
+             "correct": "B",
+             "hint": "The signature of a signal must match the signature of the receiving slot. (In fact a slot may have a shorter signature than the signal it receives because it can ignore extra arguments.) Source: <a href='http://doc.qt.io/qt-5/signalsandslots.html' target='_blank'>http://doc.qt.io/qt-5/signalsandslots.html</a>"
+         },
+        {
+             "question": "Q_GADGET macro:",
+             "a": "allows to have signal and slots for the classes that do not inherit from QObject,",
+             "b": "enables some features of QMetaObject, i.e. Q_ENUM, Q_PROPERTY and Q_INVOKABLE,",
+             "c": "just like Q_OBJECT macro, it requires that the class inherits from QObject.",
+             "correct": "B",
+             "hint": "The Q_GADGET macro is a lighter version of the Q_OBJECT macro for classes that do not inherit from QObject but still want to use some of the reflection capabilities offered by QMetaObject. Q_GADGETs can have Q_ENUM, Q_PROPERTY and Q_INVOKABLE, but they cannot have signals or slots. Source: <a href='http://doc.qt.io/qt-5/qobject.html#Q_GADGET' target='_blank'>http://doc.qt.io/qt-5/qobject.html#Q_GADGET</a> "
+         },
+        {
+             "question": "When Qt program enters the event loop?",
+             "a": "When it enters int main(),",
+             "b": "when QCoreApplication object is created,",
+             "c": "when QApplication.exec() is called.",
+             "correct": "C",
+             "hint": "<code>int QApplication::exec()</code> enters the main event loop and waits until <code>exit()</code> is called, then returns the value that was set to <code>exit()</code> (which is 0 if <code>exit()</code> is called via <code>quit()</code>). Source: <a href='http://doc.qt.io/qt-4.8/qapplication.html#exec' target='_blank'>http://doc.qt.io/qt-4.8/qapplication.html#exec</a> "
+         },
+         {
+             "question": "moc:",
+             "a": "is a Meta-Object Compiler,",
+             "b": "processes .cpp files and produces .moc files,",
+             "c": "implements the object properties for the classes that do not derive from QObject.",
+             "correct": "A",
+             "hint": "The moc tool reads a C++ header file. If it finds one or more class declarations that contain the Q_OBJECT macro, it produces a C++ source file containing the meta-object code for those classes.  Source: <a href='http://doc.qt.io/qt-4.8/moc.html' target='_blank'>http://doc.qt.io/qt-4.8/moc.html</a>"
+         },
+          {
+             "question": "QObjects organize themselves in object trees. It means that:",
+             "a": "each QObject can have a list of parents and a list of children,",
+             "b": "each QObject can have a parent and a list of children,",
+             "c": "they are stored in memory with the use of binary tree.",
+             "correct": "B",
+             "hint": "QObjects organize themselves in object trees. When you create a QObject with another object as parent, it's added to the parent's <code>children()</code> list, and is deleted when the parent is. Source: <a href='http://doc.qt.io/qt-4.8/objecttrees.html' target='_blank'>http://doc.qt.io/qt-4.8/objecttrees.html</a>"
+         },
+          {
+             "question": "What happens when the QObject-parent is deleted before its children?",
+             "a": "There is a memory leak,",
+             "b": "The children are deleted too,",
+             "c": "The children' parent-pointers point to invalid location, so the program may crash.",
+             "correct": "B",
+             "hint": "When you create a QObject with another object as parent, it's added to the parent's <code>children()</code> list, and is deleted when the parent is. It turns out that this approach fits the needs of GUI objects very well. For example, a QShortcut (keyboard shortcut) is a child of the relevant window, so when the user closes that window, the shorcut is deleted too. Source: <a href='http://doc.qt.io/qt-4.8/objecttrees.html' target='_blank'>http://doc.qt.io/qt-4.8/objecttrees.html</a>"
+         },
+           {
+             "question": "What is the base class of everything that appears on the screen within the Qt application?",
+             "a": "QWidget,",
+             "b": "QApplication,",
+             "c": "QGraphicsView.",
+             "correct": "A",
+             "hint": "QWidget, the base class of everything that appears on the screen, extends the parent-child relationship. Source: <a href='http://doc.qt.io/qt-4.8/objecttrees.html' target='_blank'>http://doc.qt.io/qt-4.8/objecttrees.html</a>"
+         },
+           {
+             "question": "What happens, when you try connect signal and slot, which are already connected (the same sender and receiver)?",
+             "a": "Duplicate connection will be created, and for every signal emit() the corresponding slot will be called two times,",
+             "b": "Connect() will fail and return false; the connection will remain single,",
+             "c": "If the connection type was Qt::UniqueConnection, the code will not compile.",
+             "correct": "A",
+             "hint": "By default, for every connection you make, a signal is emitted; two signals are emitted for duplicate connections. You can break all of these connections with a single disconnect() call. If you pass the Qt::UniqueConnection type, the connection will only be made if it is not a duplicate. If there is already a duplicate (exact same signal to the exact same slot on the same objects), the connection will fail and connect will return false. Source: <a href='http://doc.qt.io/qt-4.8/signalsandslots.html' target='_blank'>http://doc.qt.io/qt-4.8/signalsandslots.html</a>"
+         },
+        {
+         "question": "What will happen if you instantiate <code>QVector &lt;QWidget&gt;</code>?",
+         "a": "The compiler will complain that QWidget's copy constructor and assignment operators are disabled,",
+         "b": "The compiler will complain that QWidget is not registrated as meta-object,",
+         "c": "The code will compile, but the program will result in undefined behaviour.",
+         "correct": "A",
+         "hint": "The values stored in the various containers can be of any assignable data type. To qualify, a type must provide a default constructor, a copy constructor, and an assignment operator. This covers most data types you are likely to want to store in a container, including basic types such as int and double, pointer types, and Qt data types such as QString, QDate, and QTime, but it doesn't cover QObject or any QObject subclass (QWidget, QDialog, QTimer, etc.). If you attempt to instantiate a QList&lt;QWidget&gt;, the compiler will complain that QWidget's copy constructor and assignment operators are disabled. If you want to store these kinds of objects in a container, store them as pointers, for example as QList&lt;QWidget *&gt;. Source: <a href='http://doc.qt.io/qt-5/containers.html' target='_blank'>http://doc.qt.io/qt-5/containers.html</a>"
+         },
+         {
+         "question": "Which one class is not a part of the QtCore?",
+         "a": "QFile,",
+         "b": "QThread,",
+         "c": "QColor",
+         "correct": "C",
+         "hint": "QColor is a part of QtGui module. Source: <a href='http://doc.qt.io/qt-5/qtgui-module.html' target='_blank'>http://doc.qt.io/qt-5/qtgui-module.html</a>"
+         },
+         {
+         "question": "What happens when you set a parent to QObject twice, i.e. <pre class='prettyprint'>objectA.setParent(objectB);<br>objectA.setParent(objectC);</pre> ",
+         "a": "The objectB will stay as the parent of objectA; it's not possible to change the parent once it's set, ",
+         "b": "The pointer to objectA will be removed from objectB children list, and will be added to objectC children list,",
+         "c": "The pointer to objectA will be present on both: objectB children list and objectC children list.",
+         "correct": "B",
+         "hint": "Setting the parent of one object implicitly adds its address to the child list of the other, for example objA->setParent(objB); adds the objA pointer to the child list of objB. If we subsequently have objA->setParent(objC); then the objA pointer is removed from the child list of objB and added to the child list of objC . We call such an action reparenting. Source: An Introduction to Design Patterns in C++ with Qt 4, Alan Ezust, Paul Ezust. Chapter 9: QObject"
+         },
+          {
+         "question": "When a QWidget is placed inside QLayout,",
+         "a": "this QLayout becomes the parent of QWidget,",
+         "b": "this QWidget becomes the parent of QLayout,",
+         "c": "there is no child-parent relationship between them.",
+         "correct": "C",
+         "hint": "Widgets in a layout are not children of the layout—they are children of the widget that owns the layout. Only a widget can be the parent of another widget. Source: An Introduction to Design Patterns in C++ with Qt 4, Alan Ezust, Paul Ezust. Chapter 9.3.1: Layouts, first look"
+         },
+        {
+         "question": "Is it possible to create a class that inherits from two base classes, which one of them is QObject?",
+         "a": "Yes, but only if the QObject base class is put first like: <code> class SomeClass : public QObject, public OtherClass {};</code>",
+         "b": "Yes, but only if the inheritance is marked as <i>virtual</i>,",
+         "c": "No, multiple inheritance is not possible, when one of the base classes is QObject.",
+         "correct": "A",
+         "hint": "If you are using multiple inheritance, moc assumes that the first inherited class is a subclass of QObject. Also, be sure that only the first inherited class is a QObject. Source: <a href='http://doc.qt.io/qt-5/moc.html#multiple-inheritance-requires-qobject-to-be-first' target='_blank'>http://doc.qt.io/qt-5/moc.html#multiple-inheritance-requires-qobject-to-be-first</a>"
+         },
+        {
+         "question": "What happens when you provide the signal body implementation?",
+         "a": "If the implementation is in header, the code won't compile,",
+         "b": "If the implementation is in .cpp file, the code won't compile,",
+         "c": "The implementation will overwrite usual implementation done by moc and the code will not work as intended.",
+         "correct": "A",
+         "hint": "Source: tested with code."
+         }
+     ]
+ }
