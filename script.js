@@ -10,12 +10,12 @@ function _(x) {
 function createStartView() {
     loadQuestions();
     content = _("content");
-    content.innerHTML = '<form> Questions count: <input type="number" name="quantity" min="1" max="100" value="10" id="idQuestionsNumberForm"><br> \
+    content.innerHTML = '<form> Questions count: <input type="number" name="quantity" min="1" max="100" value="10" id="idQNumberForm"><br> \
     <input type="submit" id="idStart" class="classButton" value="Start" onclick="startQuiz()"></form>';
 }
 
 function loadQuestions() {
-    $.getJSON('question.json', function (data) {
+    $.getJSON('http://katecpp.github.io/qt_quiz/question.json', function (data) {
         console.log('Questions loaded successfully');
         questions = data.quiz;
     });
@@ -30,22 +30,20 @@ function printQuestion() {
     console.log("Question: " + currentQuestionNr + " . " + crtQuestionTxt);
 
     content = _("content");
-    content.className= 'classQuestionsDiv';
     content.innerHTML = "<div id='idQuestionsDiv'></div>";
 
     questionsDiv = _("idQuestionsDiv");
     questionsDiv.innerHTML += "<div id='idStatusBar'></div>";
     questionsDiv.innerHTML += crtQuestionTxt + "</br>";
-    
+
     for (i = 0; i < questions[currentQuestionNr].answers.length; i++)
     {   
-        console.log("FOR " + i);
         tempAnswerTxt = questions[currentQuestionNr].answers[i].txt;
         tempChoiceValue = questions[currentQuestionNr].answers[i].key;
         questionsDiv.innerHTML += "<input type='radio' name='choices' value='" + tempChoiceValue +"'> " + tempAnswerTxt + "<br>";
     }
 
-    questionsDiv.innerHTML += "<button onclick='printAnswer()' id='submitButton'>Submit</button>";
+    questionsDiv.innerHTML += "<button onclick='printAnswer()' id='submitButton' class='classSmallButton'>Submit</button>";
 
     statusBar = _("idStatusBar");
     statusBar.innerHTML = "<h3>Question " + (currentQuestionNr+1) + " of " + totalQuestionNr;
@@ -58,7 +56,7 @@ function printAnswer() {
 
     var userAnswer = checkAnswer();
 
-    if ("NONE" === userAnswer)
+    if ("" === userAnswer)
     {
         return;
     }
@@ -76,8 +74,8 @@ function printAnswer() {
 
     $('input[name="choices"]').attr('disabled', 'disabled');
     _("submitButton").disabled = true;
-    hintdiv.innerHTML += "<p>"+ questions[currentQuestionNr].hint +"</p>";
-    hintdiv.innerHTML += "<button onclick='proceed()'>Next</button>";
+    hintdiv.innerHTML += questions[currentQuestionNr].hint;
+    hintdiv.innerHTML += "<br><button onclick='proceed()' class='classSmallButton'>Next</button>";
 }
 
 
@@ -98,11 +96,11 @@ function printResult() {
     var percentage = Math.round((100 * correctAnswersCount)/totalQuestionNr);
 
     quest = _("idQuestionsDiv");
-    console.log("Test completed");
-
     quest.innerHTML = "<h2>You got " +correctAnswersCount+ " of " + totalQuestionNr + " questions correct </h2>";
-    quest.innerHTML += "<p style='text-align:center; font-size:60px'>" + percentage + "%</font> ";
-    currentQuestionNr = 0;
+    quest.innerHTML += "<p id='idPercentage'>" + percentage + "%</p> ";
+    quest.innerHTML += '<div style="text-align:center"><button onclick="startQuizInternal()" id="idStart" class="classButton" value="Start">Start again</button></div>';
+    
+    currentQuestionNr   = 0;
     correctAnswersCount = 0;
 }
 
@@ -127,7 +125,7 @@ var checkAnswer = function() {
     if ("" === userChoice)
     {
         alert("Choose answer!");
-        return "NONE";
+        return "";
     }
     else if(userChoice == questions[currentQuestionNr].correct)
     {
@@ -144,9 +142,13 @@ var checkAnswer = function() {
 }
 
 function startQuiz() {
-    var maxQuestionsNumber = _("idQuestionsNumberForm").value;
-    totalQuestionNr = Math.min(maxQuestionsNumber, questions.length);
-    console.log("User choice: " + maxQuestionsNumber + " of " + questions.length + " questions");
+    var maxQuestions = _("idQNumberForm").value > 0 ? _("idQNumberForm").value : 1;
+    totalQuestionNr = Math.min(maxQuestions, questions.length);
+    console.log("User choice: " + maxQuestions + " of " + questions.length + " questions");
+    startQuizInternal();
+}
+
+function startQuizInternal() {
     shuffle(questions);
     printQuestion();
 }
