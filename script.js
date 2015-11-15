@@ -15,32 +15,36 @@ function createStartView() {
 }
 
 function loadQuestions() {
-    $.getJSON('http://kagura9.bitbucket.org/question.json', function (data) {
+    $.getJSON('question.json', function (data) {
         console.log('Questions loaded successfully');
         questions = data.quiz;
     });
 }
 
 function printQuestion() {
-    var question, chA, chB, chC;
+    var crtQuestionTxt = questions[currentQuestionNr].question;
+    var tempAnswerTxt = "";
+    var tempChoiceValue = "";
+    var i = 0;
 
-    console.log("Print question nr. " + currentQuestionNr);
+    console.log("Question: " + currentQuestionNr + " . " + crtQuestionTxt);
 
     content = _("content");
     content.className= 'classQuestionsDiv';
     content.innerHTML = "<div id='idQuestionsDiv'></div>";
 
     questionsDiv = _("idQuestionsDiv");
-    question = questions[currentQuestionNr].question;
-    chA = questions[currentQuestionNr].a;
-    chB = questions[currentQuestionNr].b;
-    chC = questions[currentQuestionNr].c;
-
     questionsDiv.innerHTML += "<div id='idStatusBar'></div>";
-    questionsDiv.innerHTML += question + "</br>";
-    questionsDiv.innerHTML += "<input type='radio' name='choices' value='A'> " + chA + "<br>";
-    questionsDiv.innerHTML += "<input type='radio' name='choices' value='B'> " + chB + "<br>";
-    questionsDiv.innerHTML += "<input type='radio' name='choices' value='C'> " + chC + "<br><br>";
+    questionsDiv.innerHTML += crtQuestionTxt + "</br>";
+    
+    for (i = 0; i < questions[currentQuestionNr].answers.length; i++)
+    {   
+        console.log("FOR " + i);
+        tempAnswerTxt = questions[currentQuestionNr].answers[i].txt;
+        tempChoiceValue = questions[currentQuestionNr].answers[i].key;
+        questionsDiv.innerHTML += "<input type='radio' name='choices' value='" + tempChoiceValue +"'> " + tempAnswerTxt + "<br>";
+    }
+
     questionsDiv.innerHTML += "<button onclick='printAnswer()' id='submitButton'>Submit</button>";
 
     statusBar = _("idStatusBar");
