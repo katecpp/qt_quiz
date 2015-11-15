@@ -35,7 +35,7 @@ function printQuestion() {
     chA = questions[currentQuestionNr].a;
     chB = questions[currentQuestionNr].b;
     chC = questions[currentQuestionNr].c;
-    
+
     questionsDiv.innerHTML += "<div id='idStatusBar'></div>";
     questionsDiv.innerHTML += question + "</br>";
     questionsDiv.innerHTML += "<input type='radio' name='choices' value='A'> " + chA + "<br>";
@@ -45,23 +45,20 @@ function printQuestion() {
 
     statusBar = _("idStatusBar");
     statusBar.innerHTML = "<h3>Question " + (currentQuestionNr+1) + " of " + totalQuestionNr;
-    
     questionsDiv.innerHTML += "<div id='hint-div'></div>";
-    
 }
-    
+
 function printAnswer() {
     console.log("Print answer no. " + currentQuestionNr);
-    
     hintdiv = _("hint-div");
-    
+
     var userAnswer = checkAnswer();
 
     if ("NONE" === userAnswer)
     {
-        return;   
+        return;
     }
-    
+
     if (true === userAnswer)
     {
         console.log("PrintAnswer: correct");
@@ -72,7 +69,7 @@ function printAnswer() {
         console.log("PrintAnswer: wrong");
         hintdiv.innerHTML = "<p style='background-color:red'>WRONG</p>";
     }
-    
+
     $('input[name="choices"]').attr('disabled', 'disabled');
     _("submitButton").disabled = true;
     hintdiv.innerHTML += "<p>"+ questions[currentQuestionNr].hint +"</p>";
@@ -82,7 +79,7 @@ function printAnswer() {
 
 function proceed() {
     currentQuestionNr++;
-    
+
     if (currentQuestionNr >= totalQuestionNr)
     {
         printResult();
@@ -95,7 +92,7 @@ function proceed() {
 
 function printResult() {
     var percentage = Math.round((100 * correctAnswersCount)/totalQuestionNr);
-	
+
     quest = _("idQuestionsDiv");
     console.log("Test completed");
 
