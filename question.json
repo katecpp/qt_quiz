@@ -24,9 +24,9 @@
         {
             "question": "Choose  <font color='red'>false</font> sentence about Q_OBJECT macro.",
              "answers": [
-                 {"key":"A", "txt": "It must appear in the public section of the class,"},
-                 {"key":"B", "txt":"It requires that the class in which it appears derive from QObject,"},
-                 {"key":"C", "txt":"is needed by classes that define signals and slots."}      
+                 {"key":"A", "txt": "Q_OBJECT macro must appear in the public section of the class,"},
+                 {"key":"B", "txt":"Q_OBJECT macro requires that the class in which it appears derive from QObject,"},
+                 {"key":"C", "txt":"Q_OBJECT macro is needed by classes that define signals and slots."}      
              ],
             "correct": "A",
             "hint": "The Q_OBJECT macro must appear in the private section of a class definition that declares its own signals and slots or that uses other services provided by Qt's meta-object system. Source: <a href='http://doc.qt.io/qt-5/qobject.html#Q_OBJECT' target='_blank'>http://doc.qt.io/qt-5/qobject.html</a>"
@@ -85,7 +85,7 @@
         {
             "question": "When Qt program enters the event loop?",
              "answers": [
-                 {"key":"A", "txt": "When it enters int main(),"},
+                 {"key":"A", "txt": "When the <code>int main()</code> is entered,"},
                  {"key":"B", "txt":"when QCoreApplication object is created,"},
                  {"key":"C", "txt":"when QApplication.exec() is called."}      
              ],
