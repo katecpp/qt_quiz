@@ -85,7 +85,7 @@
         {
             "question": "When Qt program enters the event loop?",
              "answers": [
-                 {"key":"A", "txt": "When the <code>int main()</code> is entered,"},
+                 {"key":"A", "txt": "When the int main() is entered,"},
                  {"key":"B", "txt":"when QCoreApplication object is created,"},
                  {"key":"C", "txt":"when QApplication.exec() is called."}      
              ],
@@ -93,11 +93,11 @@
             "hint": "<code>int QApplication::exec()</code> enters the main event loop and waits until <code>exit()</code> is called, then returns the value that was set to <code>exit()</code> (which is 0 if <code>exit()</code> is called via <code>quit()</code>). Source: <a href='http://doc.qt.io/qt-4.8/qapplication.html#exec' target='_blank'>http://doc.qt.io/qt-4.8/qapplication.html#exec</a> "
         },
         {
-            "question": "moc:",
+            "question": "Choose true sentence about moc.",
              "answers": [
-                 {"key":"A", "txt":"is a Meta-Object Compiler,"},
-                 {"key":"B", "txt":"processes .cpp files and produces .moc files,"},
-                 {"key":"C", "txt":"implements the object properties for the classes that do not derive from QObject."}      
+                 {"key":"A", "txt":"Moc is a Meta-Object Compiler,"},
+                 {"key":"B", "txt":"Moc processes .cpp files and produces .moc files,"},
+                 {"key":"C", "txt":"Moc implements the object properties for the classes that do not derive from QObject."}      
              ],
             "correct": "A",
             "hint": "The moc tool reads a C++ header file. If it finds one or more class declarations that contain the Q_OBJECT macro, it produces a C++ source file containing the meta-object code for those classes.  Source: <a href='http://doc.qt.io/qt-4.8/moc.html' target='_blank'>http://doc.qt.io/qt-4.8/moc.html</a>"
@@ -130,7 +130,7 @@
                  {"key":"C", "txt":"QGraphicsView."}      
              ],
             "correct": "A",
-            "hint": "QWidget, the base class of everything that appears on the screen, extends the parent-child relationship. Source: <a href='http://doc.qt.io/qt-4.8/objecttrees.html' target='_blank'>http://doc.qt.io/qt-4.8/objecttrees.html</a>"
+            "hint": "QWidget is the base class of everything that appears on the screen. Source: <a href='http://doc.qt.io/qt-4.8/objecttrees.html' target='_blank'>http://doc.qt.io/qt-4.8/objecttrees.html</a>"
         },
         {
             "question": "What happens, when you try connect signal and slot, which are already connected (the same sender and receiver)?",
@@ -170,7 +170,7 @@
                  {"key":"C", "txt":"The pointer to objectA will be present on both: objectB children list and objectC children list."}      
              ],  
             "correct": "B",
-            "hint": "Setting the parent of one object implicitly adds its address to the child list of the other, for example objA->setParent(objB); adds the objA pointer to the child list of objB. If we subsequently have objA->setParent(objC); then the objA pointer is removed from the child list of objB and added to the child list of objC . We call such an action reparenting. Source: An Introduction to Design Patterns in C++ with Qt 4, Alan Ezust, Paul Ezust. Chapter 9: QObject"
+            "hint": "Setting the parent of one object implicitly adds its address to the child list of the other, for example <code>objA->setParent(objB);</code> adds the objA pointer to the child list of objB. If we subsequently have <code>objA->setParent(objC);</code> then the objA pointer is removed from the child list of objB and added to the child list of objC . We call such an action reparenting. Source: <i>An Introduction to Design Patterns in C++ with Qt 4, Chapter 9: QObject</i>, Alan Ezust, Paul Ezust."
         },
         {
             "question": "When a QWidget is placed inside QLayout,",
@@ -180,7 +180,7 @@
                  {"key":"C", "txt":"there is no child-parent relationship between them."}      
              ],
             "correct": "C",
-            "hint": "Widgets in a layout are not children of the layout—they are children of the widget that owns the layout. Only a widget can be the parent of another widget. Source: An Introduction to Design Patterns in C++ with Qt 4, Alan Ezust, Paul Ezust. Chapter 9.3.1: Layouts, first look"
+            "hint": "Widgets in a layout are not children of the layout—they are children of the widget that owns the layout. Only a widget can be the parent of another widget. Source: <i>An Introduction to Design Patterns in C++ with Qt 4, Chapter 9.3.1: Layouts, first look</i>, Alan Ezust, Paul Ezust."
         },
         {
             "question": "Is it possible to create a class that inherits from two base classes, which one of them is QObject?",
@@ -233,6 +233,26 @@
              ],
             "correct": "A",
             "hint": "The QProcess class is used to start external programs and to communicate with them. Source: <a href='http://doc.qt.io/qt-5/qprocess.html' target='_blank'>http://doc.qt.io/qt-5/qprocess.html</a>"
+        },
+        {
+            "question": "Choose true sentence about Qt Property system.",
+             "answers": [
+                 {"key":"A", "txt":"A property behaves like a class data member, but it has additional features accessible through the Meta-Object System,"},
+                 {"key":"B", "txt":"A READ and WRITE accessors functions are required to create property,"},
+                 {"key":"C", "txt":"Writing to properties via <code>object->setProperty(name, value)</code> gives better diagnostics at compile time, but it slower than setting the same values through member functions."}
+             ],
+            "correct": "A",
+            "hint": "A property behaves like a class data member, but it has additional features accessible through the Meta-Object System. Accessing a property through its WRITE accessor is the better of the two, because it is faster and gives better diagnostics at compile time, but setting the property this way requires that you know about the class at compile time. Accessing properties by name lets you access classes you don't know about at compile time. Source: <a href='http://doc.qt.io/qt-4.8/properties.html#reading-and-writing-properties-with-the-meta-object-system' target='_blank'>http://doc.qt.io/qt-4.8/properties.html#reading-and-writing-properties-with-the-meta-object-system</a>"
+        },
+        {
+            "question": "The purpose of Qt Resource system is to provide mechanism for:",
+             "answers": [
+                 {"key":"A", "txt":"accessing files available on the web,"},
+                 {"key":"B", "txt":"storing binary files in the application executable,"},
+                 {"key":"C", "txt":"accessing binary files on the system of the end user."}
+             ],
+            "correct": "B",
+            "hint": "The Qt resource system is a platform-independent mechanism for storing binary files in the application's executable. This is useful if your application always needs a certain set of files (icons, translation files, etc.) and you don't want to run the risk of losing the files. Source: <a href='http://doc.qt.io/qt-5/resources.html' target='_blank'>http://doc.qt.io/qt-5/resources.html</a>"
         }
     ]
 }
