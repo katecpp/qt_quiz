@@ -10,8 +10,8 @@ function _(x) {
 function createStartView() {
     loadQuestions();
     content = _("content");
-    content.innerHTML = '<form> Questions count: <input type="number" name="quantity" min="1" max="100" value="10" id="idQNumberForm"><br> \
-    <input type="submit" id="idStart" class="classButton" value="Start" onclick="startQuiz()"></form>';
+    content.innerHTML = "<button onclick='startQuiz10()' id='idStart' class='classButton'>Start: 10 questions</button></br>";
+    content.innerHTML += "<button onclick='startQuizAll()' id='idStart' class='classButton'>Start: all questions</button>";
 }
 
 function loadQuestions() {
@@ -56,28 +56,25 @@ function printAnswer() {
 
     var userAnswer = checkAnswer();
 
-    if ("" === userAnswer)
+    if ("" !== userAnswer)
     {
-        return;
-    }
+        if (true === userAnswer)
+        {
+            console.log("PrintAnswer: correct");
+            hintdiv.innerHTML = "<p style='background-color:green'>OK</p>";
+        }
+        else if (false === userAnswer)
+        {
+            console.log("PrintAnswer: wrong");
+            hintdiv.innerHTML = "<p style='background-color:red'>WRONG</p>";
+        }
 
-    if (true === userAnswer)
-    {
-        console.log("PrintAnswer: correct");
-        hintdiv.innerHTML = "<p style='background-color:green'>OK</p>";
+        $('input[name="choices"]').attr('disabled', 'disabled');
+        _("submitButton").disabled = true;
+        hintdiv.innerHTML += questions[currentQuestionNr].hint;
+        hintdiv.innerHTML += "<br><button onclick='proceed()' class='classSmallButton'>Next</button>";
     }
-    else if (false === userAnswer)
-    {
-        console.log("PrintAnswer: wrong");
-        hintdiv.innerHTML = "<p style='background-color:red'>WRONG</p>";
-    }
-
-    $('input[name="choices"]').attr('disabled', 'disabled');
-    _("submitButton").disabled = true;
-    hintdiv.innerHTML += questions[currentQuestionNr].hint;
-    hintdiv.innerHTML += "<br><button onclick='proceed()' class='classSmallButton'>Next</button>";
 }
-
 
 function proceed() {
     currentQuestionNr++;
@@ -141,10 +138,14 @@ var checkAnswer = function() {
     return false;
 }
 
-function startQuiz() {
-    var maxQuestions = _("idQNumberForm").value > 0 ? _("idQNumberForm").value : 1;
+function startQuiz10() {
+    var maxQuestions = 10;
     totalQuestionNr = Math.min(maxQuestions, questions.length);
-    console.log("User choice: " + maxQuestions + " of " + questions.length + " questions");
+    startQuizInternal();
+}
+
+function startQuizAll() {
+    totalQuestionNr = questions.length;
     startQuizInternal();
 }
 

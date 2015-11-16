@@ -1,5 +1,5 @@
 body {
-font-family: "Verdana","Times", Georgia, Serif;
+font-family: "Ubuntu","Verdana","Times", Georgia, Serif;
 text-align: center;
 padding: 50px;
 line-height: 180%;
@@ -14,9 +14,25 @@ text-align: center;
 }
 
 .classButton {
-width:15%;
-display: inline-block;
-margin: 50px;
+width:20%;
+height:20%;
+/*display: inline-block;*/
+margin: 10px;
+background-color: #0000ff;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius:30px;
+color: #fff;
+font-size: 20px;
+text-decoration: none;
+cursor: pointer;
+border:none;
+}
+
+.classButton:hover {
+border: none;
+background:red;
+box-shadow: 0px 0px 1px #777;
 }
 
 .classSmallButton {
@@ -26,7 +42,6 @@ background-color: #2C3539;
 -webkit-border-radius: 5px;
 border-radius:6px;
 color: #fff;
-font-family: 'Oswald';
 font-size: 15px;
 text-decoration: none;
 cursor: pointer;
@@ -70,25 +85,6 @@ height: 75px;
 }
 
 #idStatusBar{
-}
-
-#idStart {
-background-color: #0000ff;
--moz-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius:6px;
-color: #fff;
-font-family: 'Oswald';
-font-size: 20px;
-text-decoration: none;
-cursor: pointer;
-border:none;
-}
-
-#idStart:hover {
-border: none;
-background:red;
-box-shadow: 0px 0px 1px #777;
 }
 
 #idPercentage {
