@@ -2,7 +2,7 @@
     "quiz":
         [
         {
-            "question": "Choose  <font color='green'>true</font> sentence about qmake:",
+            "question": "Choose true sentence about qmake:",
              "answers": [
                  {"key":"A", "txt": "It is possible to generate both - Makefile and .pro file - with the use of qmake."},
                  {"key":"B", "txt":"Qmake can generate Makefile, but it is not possible to generate .pro file with qmake,"},
@@ -93,13 +93,13 @@
             "hint": "<code>int QApplication::exec()</code> enters the main event loop and waits until <code>exit()</code> is called, then returns the value that was set to <code>exit()</code> (which is 0 if <code>exit()</code> is called via <code>quit()</code>). Source: <a href='http://doc.qt.io/qt-4.8/qapplication.html#exec' target='_blank'>http://doc.qt.io/qt-4.8/qapplication.html#exec</a> "
         },
         {
-            "question": "Choose true sentence about moc.",
+            "question": "Choose <font color='red'>false</font> sentence about moc.",
              "answers": [
                  {"key":"A", "txt":"Moc is a Meta-Object Compiler,"},
                  {"key":"B", "txt":"Moc processes .cpp files and produces .moc files,"},
-                 {"key":"C", "txt":"Moc implements the object properties for the classes that do not derive from QObject."}      
+                 {"key":"C", "txt":"Moc is unable to implement signals and slots for class templates."}      
              ],
-            "correct": "A",
+            "correct": "B",
             "hint": "The moc tool reads a C++ header file. If it finds one or more class declarations that contain the Q_OBJECT macro, it produces a C++ source file containing the meta-object code for those classes.  Source: <a href='http://doc.qt.io/qt-4.8/moc.html' target='_blank'>http://doc.qt.io/qt-4.8/moc.html</a>"
         },
         {
@@ -183,11 +183,11 @@
             "hint": "Widgets in a layout are not children of the layout—they are children of the widget that owns the layout. Only a widget can be the parent of another widget. Source: <i>An Introduction to Design Patterns in C++ with Qt 4, Chapter 9.3.1: Layouts, first look</i>, Alan Ezust, Paul Ezust."
         },
         {
-            "question": "Is it possible to create a class that inherits from two base classes, which one of them is QObject?",
+            "question": "Is it possible to create a class that inherits from two base classes, one of which is QObject?",
              "answers": [
                  {"key":"A", "txt": "Yes, but only if the QObject base class is put first like: <code> class SomeClass : public QObject, public OtherClass {};</code>"},
                  {"key":"B", "txt":"Yes, but only if the inheritance is marked as <i>virtual</i>,"},
-                 {"key":"C", "txt":"No, multiple inheritance is not possible, when one of the base classes is QObject."}      
+                 {"key":"C", "txt":"No, multiple inheritance is not possible with QObjects."}      
              ],
             "correct": "A",
             "hint": "If you are using multiple inheritance, moc assumes that the first inherited class is a subclass of QObject. Also, be sure that only the first inherited class is a QObject. Source: <a href='http://doc.qt.io/qt-5/moc.html#multiple-inheritance-requires-qobject-to-be-first' target='_blank'>http://doc.qt.io/qt-5/moc.html#multiple-inheritance-requires-qobject-to-be-first</a>"
