@@ -77,7 +77,7 @@
              "answers": [
                  {"key":"A", "txt": "allows to have signal and slots for the classes that do not inherit from QObject,"},
                  {"key":"B", "txt":"enables some features of QMetaObject, i.e. Q_ENUM, Q_PROPERTY and Q_INVOKABLE,"},
-                 {"key":"C", "txt":"just like Q_OBJECT macro, it requires that the class inherits from QObject."}      
+                 {"key":"C", "txt":"can be put only into the QObject subclasses."}      
              ],
             "correct": "B",
             "hint": "The Q_GADGET macro is a lighter version of the Q_OBJECT macro for classes that do not inherit from QObject but still want to use some of the reflection capabilities offered by QMetaObject. Q_GADGETs can have Q_ENUM, Q_PROPERTY and Q_INVOKABLE, but they cannot have signals or slots. Source: <a href='http://doc.qt.io/qt-5/qobject.html#Q_GADGET' target='_blank'>http://doc.qt.io/qt-5/qobject.html#Q_GADGET</a> "
@@ -90,17 +90,18 @@
                  {"key":"C", "txt":"when QApplication.exec() is called."}      
              ],
             "correct": "C",
-            "hint": "<code>int QApplication::exec()</code> enters the main event loop and waits until <code>exit()</code> is called, then returns the value that was set to <code>exit()</code> (which is 0 if <code>exit()</code> is called via <code>quit()</code>). Source: <a href='http://doc.qt.io/qt-4.8/qapplication.html#exec' target='_blank'>http://doc.qt.io/qt-4.8/qapplication.html#exec</a> "
+            "hint": "<code>int QApplication::exec()</code> enters the main event loop and waits until <code>exit()</code> is called, then returns the value that was set to <code>exit()</code> (which is 0 if <code>exit()</code> is called via <code>quit()</code>). Source: <a href='http://doc.qt.io/qt-4.8/qapplication.html#exec' target='_blank'>http://doc.qt.io/qt-4.8/qapplication.html#exec</a>"
         },
         {
             "question": "Choose <font color='red'>false</font> sentence about moc.",
              "answers": [
                  {"key":"A", "txt":"Moc is a Meta-Object Compiler,"},
-                 {"key":"B", "txt":"Moc processes .cpp files and produces .moc files,"},
-                 {"key":"C", "txt":"Moc is unable to implement signals and slots for class templates."}      
+                 {"key":"B", "txt":"Moc produces moc files, which are ordinary C++ files,"},
+                 {"key":"C", "txt":"Moc is unable to implement signals and slots for class templates,"},
+                 {"key":"D", "txt":"Moc expands #define-s normally, so type macros can be used as signal argument."}   
              ],
-            "correct": "B",
-            "hint": "The moc tool reads a C++ header file. If it finds one or more class declarations that contain the Q_OBJECT macro, it produces a C++ source file containing the meta-object code for those classes.  Source: <a href='http://doc.qt.io/qt-4.8/moc.html' target='_blank'>http://doc.qt.io/qt-4.8/moc.html</a>"
+            "correct": "D",
+            "hint": "Since moc doesn't expand #defines, type macros that take an argument will not work in signals and slots. Source: <a href='http://doc.qt.io/qt-4.8/moc.html#type-macros-cannot-be-used-for-signal-and-slot-parameters' target='_blank'>http://doc.qt.io/qt-4.8/moc.html#type-macros-cannot-be-used-for-signal-and-slot-parameters</a>"
         },
         {
             "question": "QObjects organize themselves in object trees. It means that:",
@@ -150,7 +151,7 @@
                  {"key":"C", "txt":"The code will compile, but the program will result in undefined behaviour."}      
              ],
             "correct": "A",
-            "hint": "The values stored in the various containers can be of any assignable data type. To qualify, a type must provide a default constructor, a copy constructor, and an assignment operator. This covers most data types you are likely to want to store in a container, including basic types such as int and double, pointer types, and Qt data types such as QString, QDate, and QTime, but it doesn't cover QObject or any QObject subclass (QWidget, QDialog, QTimer, etc.). If you attempt to instantiate a QList&lt;QWidget&gt;, the compiler will complain that QWidget's copy constructor and assignment operators are disabled. If you want to store these kinds of objects in a container, store them as pointers, for example as QList&lt;QWidget *&gt;. Source: <a href='http://doc.qt.io/qt-5/containers.html' target='_blank'>http://doc.qt.io/qt-5/containers.html</a>"
+            "hint": "The values stored in the various containers can be of any assignable data type. To qualify, a type must provide a default constructor, a copy constructor, and an assignment operator. If you attempt to instantiate a QList&lt;QWidget&gt;, the compiler will complain that QWidget's copy constructor and assignment operators are disabled. If you want to store these kinds of objects in a container, store them as pointers, for example as QList&lt;QWidget *&gt;. Source: <a href='http://doc.qt.io/qt-5/containers.html' target='_blank'>http://doc.qt.io/qt-5/containers.html</a>"
         },
         {
             "question": "Which one class is not a part of the QtCore?",
@@ -207,10 +208,10 @@
              "answers": [
                  {"key":"A", "txt":"the slot is invoked immediately, when the signal is emitted,"},
                  {"key":"B", "txt":"the slot is invoked when control returns to the event loop of the receiver's thread,"},
-                 {"key":"C", "txt":"when the sender and receiver are living in the same thread, then A, otherwise B."}      
+                 {"key":"C", "txt":"when the sender and receiver are living in the same thread, then the slot is invoked immediately, otherwise the slot is invoked when control returns to the event loop of the receiver's thread."}      
              ],
             "correct": "C",
-            "hint": "Auto Connection (default) - If the signal is emitted in the thread which the receiving object has affinity then the behavior is the same as the Direct Connection. Otherwise, the behavior is the same as the Queued Connection. Source: <a href='http://doc.qt.io/qt-5/threads-qobject.html#signals-and-slots-across-threads' target='_blank'>http://doc.qt.io/qt-5/threads-qobject.html#signals-and-slots-across-threads</a>"
+            "hint": "AutoConnection (default Qt::ConnectionType): the signal is emitted in the thread which the receiving object has affinity then the behavior is the same as the Direct Connection. Otherwise, the behavior is the same as the Queued Connection. Source: <a href='http://doc.qt.io/qt-5/threads-qobject.html#signals-and-slots-across-threads' target='_blank'>http://doc.qt.io/qt-5/threads-qobject.html#signals-and-slots-across-threads</a>"
         },
         {
             "question": "Which of the following is not a Qt container?",
