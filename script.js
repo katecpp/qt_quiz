@@ -10,8 +10,8 @@ function _(x) {
 function createStartView() {
     loadQuestions();
     content = _("content");
-    content.innerHTML = "<button onclick='startQuiz10()' id='idStart' class='classButton'>Start: 10 questions</button></br>";
-    content.innerHTML += "<button onclick='startQuizAll()' id='idStart' class='classButton'>Start: all questions</button>";
+    content.innerHTML = "<button onclick='startQuiz10()' id='idStart' class='btn'>Start: 10 questions</button><br>";
+    content.innerHTML += "<button onclick='startQuizAll()' id='idStart' class='btn'>Start: all questions</button>";
 }
 
 function loadQuestions() {
