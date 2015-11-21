@@ -124,7 +124,7 @@
             "hint": "When you create a QObject with another object as parent, it's added to the parent's <code>children()</code> list, and is deleted when the parent is. It turns out that this approach fits the needs of GUI objects very well. For example, a QShortcut (keyboard shortcut) is a child of the relevant window, so when the user closes that window, the shorcut is deleted too. Source: <a href='http://doc.qt.io/qt-4.8/objecttrees.html' target='_blank'>http://doc.qt.io/qt-4.8/objecttrees.html</a>"
         },
         {
-            "question": "What is the base class of everything that appears on the screen within the Qt application?",
+            "question": "What is the base class of everything that appears on the screen within the Qt4 application?",
              "answers": [
                  {"key":"A", "txt":"QWidget,"},
                  {"key":"B", "txt":"QApplication,"},
