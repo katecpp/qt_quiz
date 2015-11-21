@@ -254,6 +254,27 @@
              ],
             "correct": "B",
             "hint": "The Qt resource system is a platform-independent mechanism for storing binary files in the application's executable. This is useful if your application always needs a certain set of files (icons, translation files, etc.) and you don't want to run the risk of losing the files. Source: <a href='http://doc.qt.io/qt-5/resources.html' target='_blank'>http://doc.qt.io/qt-5/resources.html</a>"
+        },
+        {
+            "question": "Qt Quick is a collection of several technologies. Which one is not a part of it?",
+             "answers": [
+                 {"key":"A", "txt":"QML,"},
+                 {"key":"B", "txt":"html,"},
+                 {"key":"C", "txt":"javascript,"},
+                 {"key":"D", "txt":"Qt C++."}
+             ],
+            "correct": "B",
+            "hint": "Qt Quick itself is a collection of several technologies: QML - Markup language for user interfaces, JavaScript - The dynamic scripting language, Qt C++ - The highly portable enhanced c++ library. Source: <a href='http://qmlbook.github.io/en/ch01/index.html#qt-quick' target='_blank'>http://qmlbook.github.io/en/ch01/index.html#qt-quick</a>"
+        },
+        {
+            "question": "All visual items in Qt Declarative inherit from:",
+             "answers": [
+                 {"key":"A", "txt":"Item,"},
+                 {"key":"B", "txt":"Component,"},
+                 {"key":"C", "txt":"QtObject."}
+             ],
+            "correct": "A",
+            "hint": "All visual items in Qt Declarative inherit from Item. Source: <a href='http://doc.qt.io/qt-4.8/qml-item.html#details' target='_blank'>http://doc.qt.io/qt-4.8/qml-item.html#details</a>"
         }
     ]
 }
