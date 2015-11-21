@@ -61,12 +61,12 @@ function printAnswer() {
         if (true === userAnswer)
         {
             console.log("PrintAnswer: correct");
-            hintdiv.innerHTML = "<p style='background-color:green'>OK</p>";
+            hintdiv.innerHTML = "<p id='idCorrectP'>OK</p>";
         }
         else if (false === userAnswer)
         {
             console.log("PrintAnswer: wrong");
-            hintdiv.innerHTML = "<p style='background-color:red'>WRONG</p>";
+            hintdiv.innerHTML = "<p id='idWrongP'>WRONG</p>";
         }
 
         $('input[name="choices"]').attr('disabled', 'disabled');
@@ -95,7 +95,7 @@ function printResult() {
     quest = _("idQuestionsDiv");
     quest.innerHTML = "<h2>You got " +correctAnswersCount+ " of " + totalQuestionNr + " questions correct </h2>";
     quest.innerHTML += "<p id='idPercentage'>" + percentage + "%</p> ";
-    quest.innerHTML += '<div style="text-align:center"><button onclick="startQuizInternal()" id="idStart" class="classButton" value="Start">Start again</button></div>';
+    quest.innerHTML += '<div style="text-align:center"><button onclick="startQuizInternal()" id="idStart" class="btn" value="Start">Start again</button></div>';
     
     currentQuestionNr   = 0;
     correctAnswersCount = 0;
