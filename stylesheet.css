@@ -3,8 +3,6 @@ body {
     text-align: center;
     padding: 50px;
     line-height: 180%;
-    background-image: url("http://katecpp.github.io/qt_quiz/symphony.png");
-    background-repeat: repeat;
 }
 
 p {
