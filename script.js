@@ -12,7 +12,7 @@ function createStartView() {
 }
 
 function loadQuestions() {
-    $.getJSON('http://katecpp.github.io/qt_quiz/question.json', function (data) {
+    $.getJSON('https://katecpp.github.io/qt_quiz/question.json', function (data) {
         console.log('Questions loaded successfully');
         questions = data.quiz;
     }).error(function(){
