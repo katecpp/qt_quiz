@@ -15,6 +15,11 @@ function loadQuestions() {
     $.getJSON('http://katecpp.github.io/qt_quiz/question.json', function (data) {
         console.log('Questions loaded successfully');
         questions = data.quiz;
+    }).error(function(){
+        content = _("content");
+        content.innerHTML = "<h3>Ooops... something went wrong!</h3>\
+                            <p>Questions could not be loaded.<br>\
+                            Maybe your browser does not support jQuery 1.7.1.</p>";
     });
 }
 
