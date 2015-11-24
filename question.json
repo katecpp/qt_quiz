@@ -124,7 +124,7 @@
             "hint": "When you create a QObject with another object as parent, it's added to the parent's <code>children()</code> list, and is deleted when the parent is. It turns out that this approach fits the needs of GUI objects very well. For example, a QShortcut (keyboard shortcut) is a child of the relevant window, so when the user closes that window, the shorcut is deleted too. Source: <a href='http://doc.qt.io/qt-4.8/objecttrees.html' target='_blank'>http://doc.qt.io/qt-4.8/objecttrees.html</a>"
         },
         {
-            "question": "What is the base class of everything that appears on the screen within the Qt4 application?",
+            "question": "What is the base class of everything that appears on the screen within the Qt4 Widget application?",
              "answers": [
                  {"key":"A", "txt":"QWidget,"},
                  {"key":"B", "txt":"QApplication,"},
@@ -275,6 +275,39 @@
              ],
             "correct": "A",
             "hint": "All visual items in Qt Declarative inherit from Item. Source: <a href='http://doc.qt.io/qt-4.8/qml-item.html#details' target='_blank'>http://doc.qt.io/qt-4.8/qml-item.html#details</a>"
-        }
+        },
+        {
+            "question": "You want to create C++ class that is usable from QML and drawable. The C++ class must:",
+             "answers": [
+                 {"key":"A", "txt":"Inherit from QObject,"},
+                 {"key":"B", "txt":"Declare its properties using the Q_PROPERTY macro,"},
+                 {"key":"C", "txt":"override paint() method,"},
+                  {"key":"D", "txt":"All of above."}
+             ],
+            "correct": "D",
+            "hint": "Source: <a href='http://doc.qt.io/qt-5/qtqml-tutorials-extending-qml-example.html#chapter-1-creating-a-new-type' target='_blank'>http://doc.qt.io/qt-5/qtqml-tutorials-extending-qml-example.html#chapter-1-creating-a-new-type</a>"
+        },
+        {
+            "question":"<code>QGraphicsItem::ItemHasNoContents</code> flag enabled means that:",
+             "answers": [
+                 {"key":"A", "txt":"the QGraphicsItem object has no properties defined,"},
+                 {"key":"B", "txt":"the attempt to paint the QGraphicsItem failed,"},
+                 {"key":"C", "txt":"the item does not paint anything,"},
+                  {"key":"D", "txt":"the item is a panel."}
+             ],
+            "correct": "C",
+            "hint": "<code>QGraphicsItem::ItemHasNoContents</code> means that the item does not paint anything (i.e., calling paint() on the item has no effect). You should set this flag on items that do not need to be painted to ensure that Graphics View avoids unnecessary painting preparations. This flag was introduced in Qt 4.6. Source: <a href='http://doc.qt.io/qt-4.8/qgraphicsitem.html' target='_blank'>http://doc.qt.io/qt-4.8/qgraphicsitem.html</a>"
+        },
+        {
+            "question":"Choose <font color='red'>false</font> sentence about <code>Q_INVOKABLE</code> macro.",
+             "answers": [
+                 {"key":"A", "txt":"<code>Q_INVOKABLE</code> makes the method available to the Qt Meta-Object system,"},
+                 {"key":"B", "txt":"<code>Q_INVOKABLE</code> allows to access methods from QML code,"},
+                 {"key":"C", "txt":"Qt slots do not require <code>Q_INVOKABLE</code> to be accessible from QML,"},
+                  {"key":"D", "txt":"<code>Q_INVOKABLE</code> methods are only possible in QObjects."}
+             ],
+            "correct": "D",
+            "hint": "The Q_GADGET macro is a lighter version of the Q_OBJECT macro for classes that do not inherit from QObject. Q_GADGETs can have Q_ENUM, Q_PROPERTY and Q_INVOKABLE, but they cannot have signals or slots. Source: <a href='http://doc.qt.io/qt-5/qobject.html#Q_GADGET' target='_blank'>http://doc.qt.io/qt-5/qobject.html#Q_GADGET</a>"
+        }   
     ]
 }
