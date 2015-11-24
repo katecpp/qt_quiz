@@ -14,7 +14,7 @@ h2 {
 }
 
 .classSmallButton {
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
     background-color: #2C3539;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -29,7 +29,7 @@ h2 {
 .classSmallButton:hover {
     border: none;
     background:green;
-    box-shadow: 0px 0px 1px #777;
+    box-shadow: 0 0 1px #777;
 }
 
 #idQuestionsDiv {
@@ -45,7 +45,7 @@ h2 {
 }
 
 #idHeaderDiv {
-    padding: 0px;
+    padding: 0;
 }
 
 #content {
