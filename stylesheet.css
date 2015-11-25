@@ -35,7 +35,6 @@ h2 {
 #idQuestionsDiv {
 /* border:5px solid red; *//* debug*/
     margin: auto;
-    flow: center;
     width:75%;
     height:100%;
     text-align: left;
@@ -60,9 +59,6 @@ h2 {
     left: 42%;
     bottom: -20px;
     height: 75px;
-}
-
-#idStatusBar{
 }
 
 #idPercentage {
@@ -110,7 +106,7 @@ h2 {
     left: 0;
     border-radius: 0.25em;
     padding-left: 0.25em;
-    box-shadow: inset 1px 1px 0px rgba(255,255,255,0.5), inset -1px -1px 0 rgba(0,0,0,0.1);
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,0.5), inset -1px -1px 0 rgba(0,0,0,0.1);
 
 background: -moz-linear-gradient(top,  rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 49%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.35)), color-stop(49%,rgba(255,255,255,0.2)), color-stop(50%,rgba(255,255,255,0)), color-stop(100%,rgba(0,0,0,0.1)));
@@ -132,7 +128,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#59ffffff', e
     -o-transition: 0.1s ease-in;
     transition-property: background, border;
     transition: 0.1s ease-in;
-
 }
 
 /* Hover / Focus */
