@@ -16,7 +16,7 @@ function loadQuestions() {
         console.log('Questions loaded successfully');
         questions = data.quiz;
     }).error(function(){
-        content = _("content");
+        var content = _("content");
         content.innerHTML = "<h3>Ooops... something went wrong!</h3>\
                             <p>Questions could not be loaded.<br>\
                             Maybe your browser does not support jQuery 1.7.1.</p>";
@@ -24,14 +24,13 @@ function loadQuestions() {
 }
 
 function printQuestion() {
+    var content = _("content");
+    
     var crtQuestionTxt = questions[currentQuestionNr].question;
     var tempAnswerTxt = "";
     var tempChoiceValue = "";
     var i = 0;
 
-    console.log("Question: " + currentQuestionNr + " . " + crtQuestionTxt);
-
-    content = _("content");
     content.innerHTML = "<div id='idQuestionsDiv'></div>";
 
     questionsDiv = _("idQuestionsDiv");
@@ -53,8 +52,7 @@ function printQuestion() {
 }
 
 function printAnswer() {
-    console.log("Print answer no. " + currentQuestionNr);
-    hintdiv = _("hint-div");
+    var hintdiv = _("hint-div");
 
     var userAnswer = checkAnswer();
 
@@ -62,12 +60,10 @@ function printAnswer() {
     {
         if (true === userAnswer)
         {
-            console.log("PrintAnswer: correct");
             hintdiv.innerHTML = "<p id='idCorrectP'>OK</p>";
         }
         else if (false === userAnswer)
         {
-            console.log("PrintAnswer: wrong");
             hintdiv.innerHTML = "<p id='idWrongP'>WRONG</p>";
         }
 
@@ -92,9 +88,9 @@ function proceed() {
 }
 
 function printResult() {
-    var percentage = Math.round((100 * correctAnswersCount)/totalQuestionNr);
+    var quest       = _("idQuestionsDiv");
+    var percentage  = Math.round((100 * correctAnswersCount)/totalQuestionNr);
 
-    quest = _("idQuestionsDiv");
     quest.innerHTML = "<h2>You got " +correctAnswersCount+ " of " + totalQuestionNr + " questions correct </h2>";
     quest.innerHTML += "<p id='idPercentage'>" + percentage + "%</p> ";
     quest.innerHTML += '<div style="text-align:center"><button onclick="startQuizInternal()" id="idStart" class="btn" value="Start">Start again</button></div>';
