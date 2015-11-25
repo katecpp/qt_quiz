@@ -100,7 +100,7 @@ function printResult() {
 }
 
 var getUserAnswer = function() {
-    choices = document.getElementsByName("choices");
+    var choices = document.getElementsByName("choices");
 
     for(var i=0; i<choices.length; i++)
     {
@@ -114,8 +114,6 @@ var getUserAnswer = function() {
 }
 
 var checkAnswer = function() {
-    var choices = document.getElementsByName("choices");
-
     var userChoice = getUserAnswer();
     if ("" === userChoice)
     {
