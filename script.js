@@ -114,7 +114,7 @@ var getUserAnswer = function() {
 }
 
 var checkAnswer = function() {
-    choices = document.getElementsByName("choices");
+    var choices = document.getElementsByName("choices");
 
     var userChoice = getUserAnswer();
     if ("" === userChoice)
@@ -122,15 +122,10 @@ var checkAnswer = function() {
         alert("Choose answer!");
         return "";
     }
-    else if(userChoice == questions[currentQuestionNr].correct)
+    else if(userChoice === questions[currentQuestionNr].correct)
     {
-        console.log("Correct answer.");
         correctAnswersCount++;
         return true;
-    }
-    else
-    {
-        console.log("Wrong answer " + userChoice + " instead of " + questions[currentQuestionNr].correct);
     }
 
     return false;

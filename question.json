@@ -308,6 +308,16 @@
              ],
             "correct": "D",
             "hint": "The Q_GADGET macro is a lighter version of the Q_OBJECT macro for classes that do not inherit from QObject. Q_GADGETs can have Q_ENUM, Q_PROPERTY and Q_INVOKABLE, but they cannot have signals or slots. Source: <a href='http://doc.qt.io/qt-5/qobject.html#Q_GADGET' target='_blank'>http://doc.qt.io/qt-5/qobject.html#Q_GADGET</a>"
+        },
+        {
+            "question":"Throwing an exception from a Qt slot can result in undefined behaviour, when:",
+             "answers": [
+                 {"key":"A", "txt":"the slot was invoked by signal-slot connection and the exception is not handled within this slot,"},
+                 {"key":"B", "txt":"the slot was invoked directly or by signal-slot connection and the exception is not handled within this slot,"},
+                 {"key":"C", "txt":"the slot was invoked by signal-slot connection, no matter if it is handled within this slot or not."}
+             ],
+            "correct": "A",
+            "hint": "Throwing an exception from a slot invoked by Qt's signal-slot connection mechanism is considered undefined behaviour, unless it is handled within the slot. <a href='http://doc.qt.io/qt-5/exceptionsafety.html#signals-and-slots' target='_blank'>http://doc.qt.io/qt-5/exceptionsafety.html#signals-and-slots</a>"
         }   
     ]
 }
