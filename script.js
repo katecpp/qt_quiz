@@ -1,6 +1,6 @@
-var questions = [];
-var totalQuestionNr = 0;
-var currentQuestionNr = 0;
+var questions           = [];
+var totalQuestionNr     = 0;
+var currentQuestionNr   = 0;
 var correctAnswersCount = 0;
 
 function _(x) {
@@ -17,44 +17,35 @@ function loadQuestions() {
         questions = data.quiz;
     }).error(function(){
         var content = _("content");
-        content.innerHTML = "<h3>Ooops... something went wrong!</h3>\
-                            <p>Questions could not be loaded.<br>\
-                            Maybe your browser does not support jQuery 1.7.1.</p>";
+        content.innerHTML = "<h3>Ooops... something went wrong!</h3>"   +
+                            "<p>Questions could not be loaded.<br>"     +
+                            "Maybe your browser does not support jQuery 1.7.1.</p>";
     });
 }
 
 function printQuestion() {
-    var content = _("content");
-    
-    var crtQuestionTxt = questions[currentQuestionNr].question;
-    var tempAnswerTxt = "";
-    var tempChoiceValue = "";
+    var statusBar       = _("status");
+    var questionsDiv    = _("question");
+    var hintdiv         = _("hint");
     var i = 0;
 
-    content.innerHTML = "<div id='idQuestionsDiv'></div>";
-
-    questionsDiv = _("idQuestionsDiv");
-    questionsDiv.innerHTML += "<div id='idStatusBar'></div>";
-    questionsDiv.innerHTML += crtQuestionTxt + "</br>";
+    statusBar.innerHTML = "<h3>Question " + (currentQuestionNr+1) + " of " + totalQuestionNr;
+    questionsDiv.innerHTML = questions[currentQuestionNr].question + "</br>";
 
     for (i = 0; i < questions[currentQuestionNr].answers.length; i++)
     {   
-        tempAnswerTxt = questions[currentQuestionNr].answers[i].txt;
-        tempChoiceValue = questions[currentQuestionNr].answers[i].key;
-        questionsDiv.innerHTML += "<input type='radio' name='choices' value='" + tempChoiceValue +"'> " + tempAnswerTxt + "<br>";
+        questionsDiv.innerHTML += "<input type='radio' name='choices' value='" + 
+                                    questions[currentQuestionNr].answers[i].key + "'> " + 
+                                    questions[currentQuestionNr].answers[i].txt + "<br>";
     }
 
     questionsDiv.innerHTML += "<button onclick='printAnswer()' id='submitButton' class='classSmallButton'>Submit</button>";
-
-    statusBar = _("idStatusBar");
-    statusBar.innerHTML = "<h3>Question " + (currentQuestionNr+1) + " of " + totalQuestionNr;
-    questionsDiv.innerHTML += "<div id='hint-div'></div>";
+    hintdiv.innerHTML = "";
 }
 
 function printAnswer() {
-    var hintdiv = _("hint-div");
-
-    var userAnswer = checkAnswer();
+    var hintdiv     = _("hint");
+    var userAnswer  = checkAnswer();
 
     if ("" !== userAnswer)
     {
@@ -88,12 +79,17 @@ function proceed() {
 }
 
 function printResult() {
-    var quest       = _("idQuestionsDiv");
+    var result       = _("question");
+    var status       = _("status");
+    var hint         = _("hint");
     var percentage  = Math.round((100 * correctAnswersCount)/totalQuestionNr);
 
-    quest.innerHTML = "<h2>You got " +correctAnswersCount+ " of " + totalQuestionNr + " questions correct </h2>";
-    quest.innerHTML += "<p id='idPercentage'>" + percentage + "%</p> ";
-    quest.innerHTML += '<div style="text-align:center"><button onclick="startQuiz(totalQuestionNr)" class="btn" value="Start">Start again</button></div>';
+    result.innerHTML = "<h2>You got " +correctAnswersCount+ " of " + totalQuestionNr + " questions correct </h2>";
+    result.innerHTML += "<p id='idPercentage'>" + percentage + "%</p> ";
+    result.innerHTML += '<div style="text-align:center"><button onclick="startQuiz(totalQuestionNr)" class="btn" value="Start">Start again</button></div>';
+    
+    status.innerHTML    = "";
+    hint.innerHTML      = "";
     
     currentQuestionNr   = 0;
     correctAnswersCount = 0;
@@ -134,6 +130,7 @@ function startQuiz(value) {
     totalQuestionNr = Math.min(maxQuestions, questions.length);
     shuffle(questions);
     printQuestion();
+    document.getElementById("content").className = "quiz";
 }
 
 function shuffle(array) {

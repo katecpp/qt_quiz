@@ -32,7 +32,7 @@ h2 {
     box-shadow: 0 0 1px #777;
 }
 
-#idQuestionsDiv {
+.quiz > #main {
 /* border:5px solid red; *//* debug*/
     margin: auto;
     width:75%;
