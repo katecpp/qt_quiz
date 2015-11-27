@@ -93,7 +93,7 @@ function printResult() {
 
     quest.innerHTML = "<h2>You got " +correctAnswersCount+ " of " + totalQuestionNr + " questions correct </h2>";
     quest.innerHTML += "<p id='idPercentage'>" + percentage + "%</p> ";
-    quest.innerHTML += '<div style="text-align:center"><button onclick="startQuizInternal()" id="idStart" class="btn" value="Start">Start again</button></div>';
+    quest.innerHTML += '<div style="text-align:center"><button onclick="startQuiz(totalQuestionNr)" class="btn" value="Start">Start again</button></div>';
     
     currentQuestionNr   = 0;
     correctAnswersCount = 0;
@@ -129,18 +129,9 @@ var checkAnswer = function() {
     return false;
 }
 
-function startQuiz10() {
-    var maxQuestions = 10;
+function startQuiz(value) {
+    var maxQuestions = value > 0 ? value: questions.length;
     totalQuestionNr = Math.min(maxQuestions, questions.length);
-    startQuizInternal();
-}
-
-function startQuizAll() {
-    totalQuestionNr = questions.length;
-    startQuizInternal();
-}
-
-function startQuizInternal() {
     shuffle(questions);
     printQuestion();
 }
