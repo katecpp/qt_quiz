@@ -26,10 +26,10 @@ function loadQuestions() {
 function printQuestion() {
     var statusBar       = _("status");
     var questionsDiv    = _("question");
-    var hintdiv         = _("hint");
+    var hintDiv         = _("hint");
     var i = 0;
 
-    statusBar.innerHTML = "<h3>Question " + (currentQuestionNr+1) + " of " + totalQuestionNr;
+    statusBar.innerHTML = "<h3>Question " + (currentQuestionNr+1) + " of " + totalQuestionNr + "</h3>";
     questionsDiv.innerHTML = questions[currentQuestionNr].question + "</br>";
 
     for (i = 0; i < questions[currentQuestionNr].answers.length; i++)
@@ -39,29 +39,29 @@ function printQuestion() {
                                     questions[currentQuestionNr].answers[i].txt + "<br>";
     }
 
-    questionsDiv.innerHTML += "<button onclick='printAnswer()' id='submitButton' class='classSmallButton'>Submit</button>";
-    hintdiv.innerHTML = "";
+    questionsDiv.innerHTML += "<button onclick='printAnswer()' id='submitButton' class='smallBtn'>Submit</button>";
+    hintDiv.innerHTML = "";
 }
 
 function printAnswer() {
-    var hintdiv     = _("hint");
+    var hintDiv     = _("hint");
     var userAnswer  = checkAnswer();
 
-    if ("" !== userAnswer)
+    if (undefined !== userAnswer)
     {
         if (true === userAnswer)
         {
-            hintdiv.innerHTML = "<p id='idCorrectP'>OK</p>";
+            hintDiv.innerHTML = "<p id='correct'>OK</p>";
         }
         else if (false === userAnswer)
         {
-            hintdiv.innerHTML = "<p id='idWrongP'>WRONG</p>";
+            hintDiv.innerHTML = "<p id='wrong'>WRONG</p>";
         }
 
         $('input[name="choices"]').attr('disabled', 'disabled');
         _("submitButton").disabled = true;
-        hintdiv.innerHTML += questions[currentQuestionNr].hint;
-        hintdiv.innerHTML += "<br><button onclick='proceed()' class='classSmallButton'>Next</button>";
+        hintDiv.innerHTML += questions[currentQuestionNr].hint;
+        hintDiv.innerHTML += "<br><button onclick='proceed()' class='smallBtn'>Next</button>";
     }
 }
 
@@ -85,7 +85,7 @@ function printResult() {
     var percentage  = Math.round((100 * correctAnswersCount)/totalQuestionNr);
 
     result.innerHTML = "<h2>You got " +correctAnswersCount+ " of " + totalQuestionNr + " questions correct </h2>";
-    result.innerHTML += "<p id='idPercentage'>" + percentage + "%</p> ";
+    result.innerHTML += "<p id='percentage'>" + percentage + "%</p> ";
     result.innerHTML += '<div style="text-align:center"><button onclick="startQuiz(totalQuestionNr)" class="btn" value="Start">Start again</button></div>';
     
     status.innerHTML    = "";
@@ -106,15 +106,15 @@ var getUserAnswer = function() {
         }
     }
 
-    return "";
+    return undefined;
 }
 
 var checkAnswer = function() {
     var userChoice = getUserAnswer();
-    if ("" === userChoice)
+    if (undefined === userChoice)
     {
         alert("Choose answer!");
-        return "";
+        return undefined;
     }
     else if(userChoice === questions[currentQuestionNr].correct)
     {

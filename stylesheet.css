@@ -13,7 +13,7 @@ h2 {
     text-align: center;
 }
 
-.classSmallButton {
+.smallBtn {
     margin: 10px 0 10px 0;
     background-color: #2C3539;
     -moz-border-radius: 5px;
@@ -26,7 +26,7 @@ h2 {
     border:none;
 }
 
-.classSmallButton:hover {
+.smallBtn:hover {
     border: none;
     background:green;
     box-shadow: 0 0 1px #777;
@@ -42,7 +42,7 @@ h2 {
     border-radius:16px;
 }
 
-#idHeaderDiv {
+#header {
     padding: 0;
 }
 
@@ -60,17 +60,17 @@ h2 {
     height: 75px;
 }
 
-#idPercentage {
+#percentage {
     text-align:center;
     font-size:50px;
 }
 
-#idWrongP {
+#wrong {
     background-color: red;
     border-radius:10px;
 }
 
-#idCorrectP {
+#correct {
     background-color: green;
     border-radius:10px;
 }
@@ -152,4 +152,3 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40ffffff', e
 .btn:active {
     margin:1px 0 0; 
 }
-
