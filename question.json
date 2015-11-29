@@ -66,8 +66,8 @@
             "question": "What is <font color='red'>impossible</font> regarding signals and slots?",
              "answers": [
                  {"key":"A", "txt": "Signal to signal connection,"},
-                 {"key":"B", "txt":"Connecting signal with no parameter to the slot with parameter, like <pre class='prettyprint'>connect(slider, SIGNAL(updated()), spinbox, SLOT(valueChanged(int)));</pre>"},
-                 {"key":"C", "txt":"Connecting signal with a parameter to the slot with no parameters, like <pre class='prettyprint'>connect(slider, SIGNAL(valueChanged(int)), spinbox, SLOT(update()));</pre>"}      
+                 {"key":"B", "txt":"Connecting signal with no parameter to the slot with parameter, like:<br><code>connect(slider, SIGNAL(updated()), spinbox, SLOT(valueChanged(int)));</code>"},
+                 {"key":"C", "txt":"Connecting signal with a parameter to the slot with no parameters, like:<br><code>connect(slider, SIGNAL(valueChanged(int)), spinbox, SLOT(update()));</code>"}      
              ],
             "correct": "B",
             "hint": "The signature of a signal must match the signature of the receiving slot. (In fact a slot may have a shorter signature than the signal it receives because it can ignore extra arguments.) Source: <a href='http://doc.qt.io/qt-5/signalsandslots.html' target='_blank'>http://doc.qt.io/qt-5/signalsandslots.html</a>"
@@ -98,7 +98,7 @@
                  {"key":"A", "txt":"Moc is a Meta-Object Compiler,"},
                  {"key":"B", "txt":"Moc produces moc files, which are ordinary C++ files,"},
                  {"key":"C", "txt":"Moc is unable to implement signals and slots for class templates,"},
-                 {"key":"D", "txt":"Moc expands #define-s normally, so type macros can be used as signal argument."}   
+                 {"key":"D", "txt":"Moc expands <code>#define</code>-s normally, so type macros can be used as signal argument."}   
              ],
             "correct": "D",
             "hint": "Since moc doesn't expand #defines, type macros that take an argument will not work in signals and slots. Source: <a href='http://doc.qt.io/qt-4.8/moc.html#type-macros-cannot-be-used-for-signal-and-slot-parameters' target='_blank'>http://doc.qt.io/qt-4.8/moc.html#type-macros-cannot-be-used-for-signal-and-slot-parameters</a>"
@@ -204,7 +204,7 @@
             "hint": "Code won't compile if the redundant definition (signal body) is in header. Code won't link if the redundant definition is in .cpp file. Source: tested with code."
         },
         {
-            "question": "Qt::ConnectionType::AutoConnection means, that",
+            "question": "<code>Qt::ConnectionType::AutoConnection</code> means, that",
              "answers": [
                  {"key":"A", "txt":"the slot is invoked immediately, when the signal is emitted,"},
                  {"key":"B", "txt":"the slot is invoked when control returns to the event loop of the receiver's thread,"},
@@ -267,11 +267,11 @@
             "hint": "Qt Quick itself is a collection of several technologies: QML - Markup language for user interfaces, JavaScript - The dynamic scripting language, Qt C++ - The highly portable enhanced c++ library. Source: <a href='http://qmlbook.github.io/en/ch01/index.html#qt-quick' target='_blank'>http://qmlbook.github.io/en/ch01/index.html#qt-quick</a>"
         },
         {
-            "question": "All visual items in Qt Declarative inherit from:",
+            "question": "All visual items in Qt Declarative (QML) inherit from:",
              "answers": [
                  {"key":"A", "txt":"Item,"},
                  {"key":"B", "txt":"Component,"},
-                 {"key":"C", "txt":"QtObject."}
+                 {"key":"C", "txt":"QWidget."}
              ],
             "correct": "A",
             "hint": "All visual items in Qt Declarative inherit from Item. Source: <a href='http://doc.qt.io/qt-4.8/qml-item.html#details' target='_blank'>http://doc.qt.io/qt-4.8/qml-item.html#details</a>"
@@ -317,7 +317,27 @@
                  {"key":"C", "txt":"the slot was invoked by signal-slot connection, no matter if it is handled within this slot or not."}
              ],
             "correct": "A",
-            "hint": "Throwing an exception from a slot invoked by Qt's signal-slot connection mechanism is considered undefined behaviour, unless it is handled within the slot. <a href='http://doc.qt.io/qt-5/exceptionsafety.html#signals-and-slots' target='_blank'>http://doc.qt.io/qt-5/exceptionsafety.html#signals-and-slots</a>"
-        }   
+            "hint": "Throwing an exception from a slot invoked by Qt's signal-slot connection mechanism is considered undefined behaviour, unless it is handled within the slot. Source: <a href='http://doc.qt.io/qt-5/exceptionsafety.html#signals-and-slots' target='_blank'>http://doc.qt.io/qt-5/exceptionsafety.html#signals-and-slots</a>"
+        },
+        {
+            "question":"QML object's <b>id</b> attribute:",
+             "answers": [
+                 {"key":"A", "txt":"can be read and set during runtime just like any other QML object attribute,"},
+                 {"key":"B", "txt":"can begin with a lowercase or uppercase letter or an underscore,"},
+                 {"key":"C", "txt":"is optional, but recommended."}
+             ],
+            "correct": "C",
+            "hint": "Id must begin with a lower-case letter or an underscore. Once an object instance is created, the value of its id attribute cannot be changed. Source: <a href='http://doc.qt.io/qt-5/qtqml-syntax-objectattributes.html#the-id-attribute' target='_blank'>http://doc.qt.io/qt-5/qtqml-syntax-objectattributes.html#the-id-attribute</a>"
+        },
+        {
+            "question":"Setting QML object's <b>z</b> property to negative value will cause that:",
+             "answers": [
+                 {"key":"A", "txt":"this object goes to top in case of overlapping siblings objects,"},
+                 {"key":"B", "txt":"this object goes to bottom in case of overlapping sibling objects,"},
+                 {"key":"C", "txt":"It impossible, <b>z</b> property can only have positive value."}
+             ],
+            "correct": "B",
+            "hint": "Items with a negative stacking value are drawn under their parent's content. Source: <a href='http://doc.qt.io/qt-5/qml-qtquick-item.html#z-prop' target='_blank'>http://doc.qt.io/qt-5/qml-qtquick-item.html#z-prop</a>"
+        }  
     ]
 }
