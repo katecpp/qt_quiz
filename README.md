@@ -1,6 +1,6 @@
 # Qt knowledge quiz
 
-Qt knowledle quiz done with html+css+js. The sources are located on branch <b>gh-pages</b>.
+Qt knowledge quiz done with html+css+js. The sources are located on branch <b>gh-pages</b>.
 
 Play quiz on: http://katecpp.github.io/qt_quiz/
 
