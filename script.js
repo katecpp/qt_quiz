@@ -7,17 +7,16 @@ function _(x) {
     return document.getElementById(x);
 }
 
-function createStartView() {
-    loadQuestions();
-}
-
-function loadQuestions() {
+function loadQuestionsAndStartQuiz(value) {
     $.getJSON('https://katecpp.github.io/qt_quiz/question.json', function (data) {
         questions = data.quiz;
-    }).error(function(){
+    })
+        .error(function(){
         _("content").innerHTML = "<h3>Ooops... something went wrong!</h3>"   +
                             "<p>Questions could not be loaded.<br>"     +
-                            "Maybe your browser does not support jQuery 1.7.1.</p>";
+                            "Maybe your browser does not support jQuery 1.7.1.</p>";})
+        .done(function() {
+            startQuizInternal(value);
     });
 }
 
@@ -120,12 +119,24 @@ function printResult() {
     correctAnswersCount = 0;
 }
 
-function startQuiz(value) {
+function startQuizInternal(value) {
+    console.log("Questions.length: " + questions.length);
     var maxQuestions = value > 0 ? value : questions.length;
     totalQuestionNr = Math.min(maxQuestions, questions.length);
     shuffle(questions);
     printQuestion();
     _("content").className = "quiz";
+}
+
+function startQuiz(value) {
+    if (questions.length === 0)
+    {
+        loadQuestionsAndStartQuiz(value);
+    }
+    else
+    {
+        startQuizInternal(value);
+    }
 }
 
 function shuffle(array) {
@@ -141,5 +152,3 @@ function shuffle(array) {
 
     return array;
 }
-
-window.addEventListener("load", createStartView, false);
